@@ -3,7 +3,7 @@
 [user]
 	email = imhosseinzadeh@gmail.com
 	name = imhosseinzadeh
-	signingKey = 2381AA4DCCED9137
+	signingKey = 307D95EEB9ABB35C
 [init]
 	defaultBranch = main
 [credential]
