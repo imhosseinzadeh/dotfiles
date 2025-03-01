@@ -1,10 +1,10 @@
-[commit]
-	gpgsign = true
 [user]
 	email = imhosseinzadeh@gmail.com
 	name = imhosseinzadeh
-	signingKey = 307D95EEB9ABB35C
+	signingkey = 2033D842882D23E6
 [init]
 	defaultBranch = main
 [credential]
 	helper = store
+[commit]
+	gpgsign = true
