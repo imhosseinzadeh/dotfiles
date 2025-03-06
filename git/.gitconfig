@@ -2,9 +2,11 @@
 	email = imhosseinzadeh@gmail.com
 	name = imhosseinzadeh
 	signingkey = 2033D842882D23E6
-[init]
-	defaultBranch = main
-[credential]
-	helper = store
+[core]
+	editor = vim
 [commit]
 	gpgsign = true
+[credential]
+	helper = store
+[init]
+	defaultBranch = main
