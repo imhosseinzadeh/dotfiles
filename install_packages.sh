@@ -48,23 +48,35 @@ fi
 
 # List of packages to install
 PACKAGES=(
+    pacman-contrib
     bash-completion
+    man
     wl-clipboard
     vim
+    luarocks
     neovim
+    wmenu
     alacritty
+    imv
+    noto-fonts
+    noto-fonts-emoji
     ttf-nerd-fonts-symbols
+    thunar
+    thunar-volman
+    thunar-archive-plugin
+    gvfs
+    xarchiver
+    dosfstools
+    exfatprogs
     git
     gcc
     go
     openjdk21-src
     docker
-    libnet
     postgresql
-    postgresql-libs
-    intellij-idea-community-edition
     firefox
     keepassxc
+    mpv
     vlc
     cmus
     telegram-desktop
@@ -125,7 +137,7 @@ if pacman -Q postgresql &>/dev/null; then
 
         # Create a PostgreSQL user with the current system username and provided password
         CURRENT_USER=$(whoami)
-        sudo -iu postgres psql -c "CREATE USER $CURRENT_USER WITH CREATEDB LOGIN PASSWORD '$POSTGRES_PASSWORD';"
+        sudo -iu postgres psql -c "CREATE USER $CURRENT_USER SUPERUSER WITH CREATEDB LOGIN PASSWORD '$POSTGRES_PASSWORD';"
         sudo -iu postgres psql -c "CREATE DATABASE lab OWNER $CURRENT_USER;"
         echo "PostgreSQL setup complete!"
     else
