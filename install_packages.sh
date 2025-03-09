@@ -73,6 +73,7 @@ PACKAGES=(
     go
     openjdk21-src
     docker
+    docker-compose
     postgresql
     firefox
     keepassxc
