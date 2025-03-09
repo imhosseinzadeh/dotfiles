@@ -64,3 +64,11 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Configure Netrw
+vim.g.netrw_banner = 0 -- Disable the banner
+vim.g.netrw_liststyle = 3 -- Tree-style listing
+vim.g.netrw_winsize = 25 -- Set sidebar width
+vim.g.netrw_altv = 1 -- Open splits to the left
+vim.g.netrw_browse_split = 4 -- Open files in the previous window
+vim.g.netrw_hide = 1 -- Hide files matching .gitignore

@@ -37,3 +37,16 @@ map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Function to toggle the `netrw` file explorer in a vertical split.
+-- This function checks if `netrw` is already open. If it is, it closes it; otherwise, it opens it.
+local function toggle_netrw()
+	local bufnr = vim.fn.bufnr("NetrwTreeListing")
+	if bufnr ~= -1 then
+		vim.cmd("bwipeout " .. bufnr)
+	else
+		vim.cmd("Lexplore")
+	end
+end
+
+-- Keybinding to toggle netrw in a vertical split
+map("n", "<leader>e", toggle_netrw, { desc = "Toggle file explorer" })
