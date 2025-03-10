@@ -1,0 +1,13 @@
+# Enable incremental search
+set incremental-search true
+
+# Enable clipboard
+set selection-clipboard clipboard
+
+# Adjust font size
+set adjust-open "best-fit"
+
+# Keybindings
+map + zoom in
+map - zoom out
+map = zoom original
