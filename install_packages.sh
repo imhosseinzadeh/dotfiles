@@ -50,6 +50,7 @@ fi
 PACKAGES=(
     pacman-contrib
     bash-completion
+    tree
     man
     wl-clipboard
     vim
