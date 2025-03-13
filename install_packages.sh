@@ -56,6 +56,7 @@ PACKAGES=(
     vim
     luarocks
     neovim
+    rtkit
     wmenu
     alacritty
     imv
