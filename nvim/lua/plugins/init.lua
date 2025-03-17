@@ -2,7 +2,7 @@
 -- =============           PLUGIN MANAGER                =============
 -- ===================================================================
 
--- [[ Install `lazy.nvim` plugin manager ]]
+-- -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -33,12 +33,22 @@ require("lazy").setup({
 	-- with the first argument being the link and the following
 	-- keys can be used to configure plugin behavior/loading/etc.
 	--
-	-- Use `opts = {}` to force a plugin to be loaded.
+	-- Use `opts = {}` to automatically pass options to a plugin's `setup()` function, forcing the plugin to be loaded.
 	--
 
+	-- Alternatively, use `config = function() ... end` for full control over the configuration.
+	-- If you prefer to call `setup` explicitly, use:
+	--    {
+	--        'lewis6991/gitsigns.nvim',
+	--        config = function()
+	--            require('gitsigns').setup({
+	--                -- Your gitsigns configuration here
+	--            })
+	--        end,
+	--    }
+	--
 	-- Here is a more advanced example where we pass configuration
-	-- options to `gitsigns.nvim`. This is equivalent to the following Lua:
-	--    require('gitsigns').setup({ ... })
+	-- options to `gitsigns.nvim`.
 	--
 	-- See `:help gitsigns` to understand what the configuration keys do
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -393,15 +403,34 @@ require("lazy").setup({
 				end,
 			})
 
-			-- Change diagnostic symbols in the sign column (gutter)
-			-- if vim.g.have_nerd_font then
-			--   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
-			--   local diagnostic_signs = {}
-			--   for type, icon in pairs(signs) do
-			--     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-			--   end
-			--   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-			-- end
+			-- Diagnostic Config
+			-- See :help vim.diagnostic.Opts
+			vim.diagnostic.config({
+				severity_sort = true,
+				float = { border = "rounded", source = "if_many" },
+				underline = { severity = vim.diagnostic.severity.ERROR },
+				signs = vim.g.have_nerd_font and {
+					text = {
+						[vim.diagnostic.severity.ERROR] = "󰅚 ",
+						[vim.diagnostic.severity.WARN] = "󰀪 ",
+						[vim.diagnostic.severity.INFO] = "󰋽 ",
+						[vim.diagnostic.severity.HINT] = "󰌶 ",
+					},
+				} or {},
+				virtual_text = {
+					source = "if_many",
+					spacing = 2,
+					format = function(diagnostic)
+						local diagnostic_message = {
+							[vim.diagnostic.severity.ERROR] = diagnostic.message,
+							[vim.diagnostic.severity.WARN] = diagnostic.message,
+							[vim.diagnostic.severity.INFO] = diagnostic.message,
+							[vim.diagnostic.severity.HINT] = diagnostic.message,
+						}
+						return diagnostic_message[diagnostic.severity]
+					end,
+				},
+			})
 
 			-- LSP servers and clients are able to communicate to each other what features they support.
 			--  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -466,9 +495,19 @@ require("lazy").setup({
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			require("mason-tool-installer").setup({
+				ensure_installed = { "stylua", "goimports" },
+			})
 
 			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"bashls",
+					"lua_ls",
+					"clangd",
+					"gopls",
+					"jdtls",
+				},
+				automatic_installation = true,
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}
@@ -562,6 +601,7 @@ require("lazy").setup({
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		config = function()
 			-- See `:help cmp`
@@ -638,6 +678,7 @@ require("lazy").setup({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
+					{ name = "nvim_lsp_signature_help" },
 				},
 			})
 		end,
@@ -648,16 +689,13 @@ require("lazy").setup({
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"folke/tokyonight.nvim",
+		"sainnhe/gruvbox-material",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
-		init = function()
+		config = function()
+			vim.g.gruvbox_material_background = "hard" -- Options: 'soft', 'medium', 'hard'
+			vim.g.gruvbox_material_enable_italic = 0 -- Disable italics
 			-- Load the colorscheme here.
-			-- Like many other themes, this one has different styles, and you could load
-			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
-
-			-- You can configure highlights by doing something like:
-			vim.cmd.hi("Comment gui=none")
+			vim.cmd.colorscheme("gruvbox-material")
 		end,
 	},
 
