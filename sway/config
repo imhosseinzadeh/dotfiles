@@ -10,7 +10,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term alacritty
 # Your preferred application launcher
 set $menu wmenu-run -if "pango:monospace 14"
 
@@ -109,8 +109,8 @@ input "1267:12458:PNP0C50:00_04F3:30AA_Touchpad" {
     # Using Nerd Fonts icons.
     set $ws1 "1:   Firefox"
     set $ws2 "2:   Code"
-    set $ws3 "3:   Terminal"
-    set $ws4 "4:   Files"
+    set $ws3 "3:   Files"
+    set $ws4 "4:   Terminal"
     set $ws5 "5:   Workspace"
     set $ws6 "6:   Document"
     set $ws7 "7:   Media"
