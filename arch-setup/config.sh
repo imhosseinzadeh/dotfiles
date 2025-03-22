@@ -8,6 +8,7 @@ PACKAGES=(
     man
     tree
     wl-clipboard
+    xdg-desktop-portal-wlr
 
     # Editors and Terminal Emulators
     vim
