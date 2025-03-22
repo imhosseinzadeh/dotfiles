@@ -44,10 +44,6 @@ if is_package_installed docker; then
     log "Docker service enabled. You may need to log out and back in for group changes to take effect."
 fi
 
-configure_network
-
-setup_users
-
 log "Arch Linux setup completed!"
 log "Please log out and back in for the following changes to take effect:"
 log "  - Docker group membership"
