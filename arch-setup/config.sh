@@ -35,6 +35,11 @@ PACKAGES=(
     # Fonts
     noto-fonts
     noto-fonts-emoji
+    cantarell-fonts
+    ttf-dejavu
+    ttf-fira-code
+    ttf-liberation
+    ttf-font-awesome
     ttf-nerd-fonts-symbols
 
     # Development Tools
