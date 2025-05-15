@@ -2,6 +2,7 @@
 
 # List of packages to install
 PACKAGES=(
+
     # System Essentials and CLI Utilities
     pacman-contrib
     bash-completion
@@ -10,27 +11,32 @@ PACKAGES=(
     wl-clipboard
     xdg-desktop-portal-wlr
 
+    # Sway
+    wmenu
+    nwg-drawer
+
     # Editors and Terminal Emulators
     vim
     neovim
     alacritty
 
     # Miscellaneous CLI Tools
-    wmenu
     rtkit
 
     # File and Media Management
     unrar
     imv
-    thunar
-    thunar-volman
-    thunar-archive-plugin
     gvfs
     gvfs-mtp
     mtpfs
     xarchiver
     dosfstools
     exfatprogs
+
+    # Gnome
+    gnome-polkit
+    nautilus
+    eog
 
     # Fonts
     noto-fonts
