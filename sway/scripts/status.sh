@@ -4,10 +4,7 @@
 CPU_EMOJI="🚀"
 CPU_TEMP_EMOJI="🌡️"
 MEMORY_EMOJI="💾"
-BLUETOOTH_EMOJI="🔵"
 WIFI_EMOJI="📶"
-BATTERY_EMOJI="🔋"
-PLUGGED_EMOJI="🔌"
 UPTIME_EMOJI="⏱️"
 DATE_EMOJI="📅"
 TIME_EMOJI="🕒"
@@ -34,9 +31,6 @@ else
     volume="$volume"
 fi
 
-# Get connected Bluetooth device
-bluetooth_device=$(bluetoothctl info | grep "Name" | awk -F ': ' '{print $2}')
-
 # Wi-Fi Name and Strength
 wifi_info=$(nmcli -t -f active,ssid,signal dev wifi | grep '^yes' | cut -d':' -f2,3)
 if [[ -n "$wifi_info" ]]; then
@@ -46,16 +40,6 @@ if [[ -n "$wifi_info" ]]; then
 else
     wifi_name="Disconnected"
     wifi_strength="N/A"
-fi
-
-# Power Information
-battery_info=$(upower -i $(upower -e | grep 'BAT'))
-battery_status=$(echo "$battery_info" | grep 'state' | awk '{print $2}')
-battery_percentage=$(echo "$battery_info" | grep 'percentage' | awk '{print $2}')
-if [[ "$battery_status" == "discharging" ]]; then
-    battery_emoji=$BATTERY_EMOJI
-else
-    battery_emoji=$PLUGGED_EMOJI
 fi
 
 # Get the system uptime in a shortened format (1d 2h 30m)
@@ -88,20 +72,13 @@ $CPU_TEMP_EMOJI $cpu_temp $SEPARATOR \
 $MEMORY_EMOJI $mem_usage $SEPARATOR \
 $volume_emoji $volume $SEPARATOR"
 
-# Add wifi information to the status
 status_bar="$status_bar $WIFI_EMOJI $wifi_name ($wifi_strength) $SEPARATOR"
-
-# Add Bluetooth device to the status bar if connected
-if [[ -n "$bluetooth_device" ]]; then
-    status_bar="$status_bar $SEPARATOR $BLUETOOTH_EMOJI $bluetooth_device"
-fi
 
 # Add uptime to the status bar
 status_bar="$status_bar $UPTIME_EMOJI $uptime_short $SEPARATOR"
 
 # Continue assembling the status bar output
 status_bar="$status_bar \
-$battery_emoji $battery_status (${battery_percentage}) $SEPARATOR \
 $DATE_EMOJI $date_formatted $SEPARATOR $TIME_EMOJI $time_formatted"
 
 # Output the status bar

@@ -1,0 +1,23 @@
+#### Input configuration
+#
+# Read `man 5 sway-input` for more information about this section.
+
+# Keyboard configuration
+input type:keyboard {
+    xkb_layout us,ir
+    xkb_options grp:win_space_toggle
+}
+
+# Touchpad configuration
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll disable
+}
+
+# bindgesture {
+#     swipe:right workspace prev
+#     swipe:left exec ~/.config/sway/scripts/advance_workspace.sh
+#     swipe:up move scratchpad
+#     swipe:down scratchpad show
+# }
