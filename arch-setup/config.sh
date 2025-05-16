@@ -3,42 +3,28 @@
 # List of packages to install
 PACKAGES=(
 
-    # System Essentials and CLI Utilities
+    ### Core System Utilities ###
     pacman-contrib
     bash-completion
     man
     tree
-    wl-clipboard
-    xdg-desktop-portal-wlr
-
-    # Sway
-    wmenu
-    nwg-drawer
-
-    # Editors and Terminal Emulators
-    vim
-    neovim
-    alacritty
-
-    # Miscellaneous CLI Tools
+    jq
     rtkit
 
-    # File and Media Management
-    unrar
-    imv
+    ### Clipboard & File Access ###
+    wl-clipboard
+    xdg-desktop-portal-wlr
     gvfs
     gvfs-mtp
     mtpfs
-    xarchiver
+
+    ### Filesystem Support ###
     dosfstools
     exfatprogs
+    unrar
+    xarchiver
 
-    # Gnome
-    gnome-polkit
-    nautilus
-    eog
-
-    # Fonts
+    ### Fonts ###
     noto-fonts
     noto-fonts-emoji
     cantarell-fonts
@@ -48,7 +34,12 @@ PACKAGES=(
     ttf-font-awesome
     ttf-nerd-fonts-symbols
 
-    # Development Tools
+    ### Terminal & CLI Tools ###
+    alacritty
+    vim
+    neovim
+
+    ### Development Tools ###
     git
     gcc
     go
@@ -56,22 +47,35 @@ PACKAGES=(
     npm
     luarocks
 
-    # Containerization and Databases
+    ### Containers & Databases ###
     docker
     docker-compose
     postgresql
 
-    # Web and Communication
-    firefox
-    telegram-desktop
-    keepassxc
+    ### Sway WM Utilities ###
+    wmenu
+    nwg-drawer
 
-    # Multimedia Players and Audio
+    ### GUI Applications ###
+    # File Management
+    nautilus
+    # Image Viewing
+    imv
+    eog
+    # Multimedia
     mpv
     vlc
     cmus
+    # Productivity
+    keepassxc
+    # Internet
+    firefox
+    telegram-desktop
 
-    # TeX / Document Processing
+    ### System Services ###
+    gnome-polkit
+
+    ### TeX/Document Processing ###
     texlive-basic
     texlive-xetex
     texlive-langarabic
