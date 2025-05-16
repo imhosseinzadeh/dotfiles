@@ -1,0 +1,76 @@
+* {
+	font-family: "Cantarell", "Noto Sans", "DejaVu Sans", sans-serif;
+	font-size: 14px;
+	min-height: 0;
+}
+
+window#waybar {
+	background-color: rgba(60, 60, 60, 1);
+	color: #e0e0e0;
+	border-bottom: 1px solid rgba(80, 80, 80, 0.6);
+}
+
+/* Workspaces */
+#workspaces button {
+	padding: 0 6px;
+	color: #a0a0a0;
+	background: transparent;
+	border-bottom: 2px solid transparent;
+}
+
+#workspaces button.focused {
+	color: #ffffff;  /* White for focused workspace */
+	border-bottom: 2px solid #909090;
+}
+
+#workspaces button.urgent {
+	color: #ff5555;
+}
+
+/* Right-side modules - all white */
+#clock, #cpu, #memory, #network, #pulseaudio, #temperature, #tray, #custom-keyboard-layout {
+	padding: 0 8px;
+	margin: 0 2px;
+	color: #ffffff;  /* White color for all right modules */
+}
+
+/* Center window title */
+#window {
+	color: #d0d0d0;
+	font-weight: bold;
+}
+
+/* Status variations (keep some color indicators for important states) */
+#temperature.critical {
+	color: #ff8080;  /* Keep red for critical temperature */
+}
+
+#network.disconnected {
+	color: #ff5555;  /* Keep red for disconnected network */
+}
+
+#pulseaudio.muted {
+	color: #ff5555;  /* Keep red for muted audio */
+}
+
+/* Tray */
+#tray {
+	background-color: rgba(60, 60, 60, 0.7);
+	border-radius: 4px;
+	padding: 0 6px;
+}
+
+/* Mode (sway binding mode) */
+#mode {
+	background-color: #606060;
+	color: white;
+	padding: 0 6px;
+	border-radius: 3px;
+}
+
+/* Hover effects */
+#workspaces button:hover {
+	background: rgba(80, 80, 80, 0.4);
+	color: #ffffff;
+}
+

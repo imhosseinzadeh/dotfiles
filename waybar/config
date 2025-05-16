@@ -1,0 +1,111 @@
+{
+	// ───── Global ────────────────────────────────────────────────────────────────
+	"layer": "top",
+		"position": "top",
+		"height": 35,
+		"modules-left": [
+			"sway/workspaces",
+		"sway/mode",
+		],
+		"modules-center": [
+			"sway/window"
+		],
+		"modules-right": [
+			"network",
+		"pulseaudio",
+		"memory",
+		"cpu",
+		"temperature",
+		"custom/keyboard-layout",
+		"clock#date",
+		"clock#time",
+		"tray"
+		],
+
+		// ───── Audio ────────────────────────────────────────────────────────────────
+
+		"pulseaudio": {
+			"format": "{icon}  {volume}%",
+			"format-muted": " MUTED",
+			"format-icons": {
+				"default": ["",""]
+			},
+			"tooltip": true,
+			"on-click": "pavucontrol",
+			"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1",
+			"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+		},
+
+		// ───── Built-ins ─────────────────────────────────────────────────────────────
+
+		"clock#time": {
+			"interval": 1,
+			"format": "{:%H:%M:%S}",
+			"tooltip": false
+		},
+
+		"clock#date": {
+			"interval": 60,
+			"format": "  {:%e %b}",
+			"tooltip-format": "{:%A, %B %e, %Y}"
+		},
+
+		"cpu": {
+			"interval": 5,
+			"format": " {usage}% ({load})",
+			"states": { "warning": 70, "critical": 90 }
+		},
+
+		"memory": {
+			"interval": 5,
+			"format": "  {}%",
+			"states": { "warning": 70, "critical": 90 }
+		},
+
+		"network": {
+			"interval": 5,
+			"format-wifi": " {essid} ({signalStrength}%)",
+			"format-ethernet": " {ifname}",
+			"format-disconnected": "⚠ Disconnected",
+			"tooltip-format": "{ifname}: {ipaddr}",
+			"on-click": "foot -e nmtui"
+		},
+
+		"sway/mode": {
+			"format": "<span style=\"font-style:italic\"> {}</span>",
+			"tooltip": false
+		},
+
+		"sway/window": {
+			"format": "{}",
+			"max-length": 50
+		},
+
+		"sway/workspaces": {
+			"all-outputs": false,
+			"disable-scroll": true
+		},
+
+		"temperature": {
+			"interval": 10,
+			"critical-threshold": 70,
+			"format": "{icon} {temperatureC}°C",
+			"format-icons": ["","","","",""],
+			"tooltip": true
+		},
+
+		"custom/keyboard-layout": {
+			"exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
+
+			"interval": 30,
+			"signal": 1,
+			"format": " {}",
+			"tooltip": false
+		},
+
+		"tray": {
+			"icon-size": 15,
+			"spacing": 5
+		}
+}
+
