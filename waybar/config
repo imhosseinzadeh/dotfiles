@@ -52,7 +52,7 @@
 
 		"cpu": {
 			"interval": 5,
-			"format": " {usage}% ({load})",
+			"format": "  {usage}%",
 			"states": { "warning": 70, "critical": 90 }
 		},
 
@@ -63,12 +63,14 @@
 		},
 
 		"network": {
-			"interval": 5,
-			"format-wifi": " {essid} ({signalStrength}%)",
-			"format-ethernet": " {ifname}",
-			"format-disconnected": "⚠ Disconnected",
-			"tooltip-format": "{ifname}: {ipaddr}",
-			"on-click": "foot -e nmtui"
+			"format-disabled": " Disabled",
+			"format-wifi": "  {bandwidthDownBits:>}  󰶡  {bandwidthUpBits:>}  󰶣",
+			"tooltip-format-wifi": "{essid}: {ipaddr}",
+			"format-ethernet": "  {ifname} {bandwidthDownBits:>}  󰶡 {bandwidthUpBits:>}  󰶣",
+			"tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+			"format-disconnected": " Disconnected",
+			"on-click": "footclient -T waybar_nmtui -e nmtui",
+			"interval": 2
 		},
 
 		"sway/mode": {
@@ -78,7 +80,7 @@
 
 		"sway/window": {
 			"format": "{}",
-			"max-length": 50
+			"max-length": 30
 		},
 
 		"sway/workspaces": {
@@ -89,7 +91,7 @@
 		"temperature": {
 			"interval": 10,
 			"critical-threshold": 70,
-			"format": "{icon} {temperatureC}°C",
+			"format": "{icon}  {temperatureC}°C",
 			"format-icons": ["","","","",""],
 			"tooltip": true
 		},
@@ -99,7 +101,7 @@
 
 			"interval": 30,
 			"signal": 1,
-			"format": " {}",
+			"format": "  {}",
 			"tooltip": false
 		},
 
