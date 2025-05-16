@@ -3,5 +3,9 @@ for_window [app_id="pavucontrol" ] floating enable
 for_window [app_id="blueman-manager"] floating enable
 for_window [title="File Operation Progress"] floating enable
 
+
+for_window [title="waybar_nmtui"] floating enable
+for_window [title="waybar_bluetui"] floating enable, resize set width 50 ppt height 70 ppt
+
 # Inhibit idle
 for_window [app_id="firefox"] inhibit_idle fullscreen

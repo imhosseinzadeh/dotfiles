@@ -1,3 +1,7 @@
 # Autostart essential services
 
+# Start gnome polkit
 exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Start foot server
+exec_always --no-startup-id foot --server
