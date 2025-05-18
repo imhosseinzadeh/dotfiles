@@ -87,16 +87,16 @@ bindsym $mod+a focus parent
 ### Workspaces
 
 # Define workspace names with Nerd Font icons.
-set $ws1  "1:   Firefox"
-set $ws2  "2:   Code"
-set $ws3  "3:   Terminal"
-set $ws4  "4:   Files"
-set $ws5  "5:   Workspace"
+set $ws1  "1:   Web"
+set $ws2  "2:   Dev"
+set $ws3  "3:   Terminal"
+set $ws4  "4:   Files"
+set $ws5  "5:   Work"
 set $ws6  "6:   Document"
 set $ws7  "7:   Media"
-set $ws8  "8:   Audio"
-set $ws9  "9:   Docker"
-set $ws10 "10:   VPN"
+set $ws8  "8:   Music"
+set $ws9  "9:   Social"
+set $ws10 "10:   VPN"
 
 # Switch to workspaces.
 bindsym $mod+1 workspace number $ws1
@@ -194,17 +194,8 @@ bindsym Shift+Print  exec ~/.config/sway/scripts/screenshot_display.sh
 ###############################################################
 
 bar {
-    position top
-    font pango:Cantarell 14
-
     swaybar_command waybar
-
-    colors {
-        statusline          #ffffff
-        background          #323232
-        inactive_workspace  #32323200 #32323200 #5c5c5c
-    }
 }
 
-default_border pixel 2
+default_border pixel 1
 client.focused #4c7899 #285577 #ffffff
