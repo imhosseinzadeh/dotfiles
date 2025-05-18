@@ -49,4 +49,4 @@ local function toggle_netrw()
 end
 
 -- Keybinding to toggle netrw in a vertical split
-map("n", "<leader>e", toggle_netrw, { desc = "Toggle file explorer" })
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
