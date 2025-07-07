@@ -35,9 +35,9 @@ PACKAGES=(
     ttf-nerd-fonts-symbols
 
     ### Terminal & CLI Tools ###
-    alacritty
     vim
-    neovim
+    nvim
+    python-pynvim
 
     ### Development Tools ###
     git
@@ -57,6 +57,8 @@ PACKAGES=(
     nwg-drawer
 
     ### GUI Applications ###
+    zathura
+    zathura-pdf-poppler
     # File Management
     nautilus
     # Image Viewing
@@ -71,9 +73,12 @@ PACKAGES=(
     # Internet
     firefox
     telegram-desktop
+    gnome-text-editor
+
+    swappy
 
     ### System Services ###
-    gnome-polkit
+    polkit-gnome
 
     ### TeX/Document Processing ###
     texlive-basic
