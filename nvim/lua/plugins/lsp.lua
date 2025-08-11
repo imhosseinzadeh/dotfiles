@@ -242,15 +242,15 @@ return {
 				"stylua", -- Used to format Lua code
 			})
 			require("mason-tool-installer").setup({
-				ensure_installed = { "stylua", "goimports" },
+				ensure_installed = { "stylua" },
 			})
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {
-					"bashls",
 					"lua_ls",
+					"bashls",
+					"rust_analyzer",
 					"clangd",
-					"gopls",
 				},
 				automatic_enable = true,
 				automatic_installation = true,
