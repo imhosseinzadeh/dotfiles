@@ -1,7 +1,7 @@
 [user]
 	email = imhosseinzadeh@gmail.com
 	name = imhosseinzadeh
-	signingkey = 2033D842882D23E6
+	signingkey = 7B0E2578238A0CCF
 [core]
 	editor = vim
 [commit]
