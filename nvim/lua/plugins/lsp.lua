@@ -153,6 +153,7 @@ return {
 			-- Diagnostic Config
 			-- See :help vim.diagnostic.Opts
 			vim.diagnostic.config({
+				update_in_insert = true,
 				severity_sort = true,
 				float = { border = "rounded", source = "if_many" },
 				underline = { severity = vim.diagnostic.severity.ERROR },
@@ -198,7 +199,22 @@ return {
 				-- clangd = {},
 				-- gopls = {},
 				-- pyright = {},
-				-- rust_analyzer = {},
+				rust_analyzer = {
+					-- cmd = { "rust-analyzer" },
+					-- filetypes = { "rust" },
+					-- capabilities = {},
+					settings = {
+						["rust-analyzer"] = {
+							cargo = { allFeatures = true },
+							checkOnSave = { command = "clippy" },
+							imports = {
+								granularity = { group = "module" },
+								prefix = "self",
+							},
+							diagnostics = { enable = true },
+						},
+					},
+				},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -249,8 +265,8 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"bashls",
-					"rust_analyzer",
 					"clangd",
+					"rust_analyzer",
 				},
 				automatic_enable = true,
 				automatic_installation = true,
