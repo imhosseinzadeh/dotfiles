@@ -60,6 +60,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Commenting
 Plug 'tpope/vim-commentary' " Comment Stuff out
 
+" Buffers
+Plug 'tpope/vim-unimpaired' " Pairs of handy bracket mappings 
+
 " Git integration
 Plug 'airblade/vim-gitgutter'    " Show git changes in gutter
 Plug 'tpope/vim-fugitive'        " In-editor Git commands
@@ -79,4 +82,3 @@ let g:gitgutter_map_keys = 0                            " Disable default key ma
 " vim-airline
 let g:airline_powerline_fonts = 1   " Use Powerline fonts if available
 let g:airline_theme='minimalist'    " Set the Airline theme
-
